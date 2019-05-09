@@ -1,0 +1,31 @@
+
+<div class="row" *ngIf="pelicula">
+  <div class="col-12">
+      <h2 class="my-5">{{ pelicula.title }}</h2>
+      <div class="col-12 d-flex justify-content-center my-5">
+        <img src="{{ _peliculasService.imgUrl }}/{{ pelicula.poster_path }}" alt="" class="img-fluid">
+      </div>
+
+      <div class="row mb-5">
+            <h3 class="col-8  text-center">Valoracion</h3>
+            <p class="h3 rounded text-white p-2"
+                      [ngClass]="{'bg-danger': pelicula.vote_average < 5,
+                                  'bg-warning': pelicula.vote_average >= 5 && pelicula.vote_average < 6 ,
+                                  'bg-primary': pelicula.vote_average >= 6 && pelicula.vote_average < 8,
+                                  'bg-success': pelicula.vote_average >= 8  }">{{ pelicula.vote_average }}
+                </p>
+      </div>
+
+      <div class="row my-5">
+        <div class="col-12 col-lg-8 m-lg-auto">
+            <h3>Sinopsis</h3>
+            <p>{{ pelicula.overview }}</p>
+        </div>
+      </div>
+
+      <div class="col-12 text-center mb-5">
+          <button [routerLink]="['/home']" type="button" class="btn btn-outline-danger">Volver</button>
+      </div>
+      
+  </div>
+</div>
