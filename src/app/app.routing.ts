@@ -9,7 +9,9 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
 const APP_ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'buscar', component: BuscarComponent },
-    { path: 'pelicula/:id', component: PeliculaComponent },
+    { path: 'buscar/:termino', component: BuscarComponent },
+    { path: 'pelicula/:id/:pag', component: PeliculaComponent },
+    { path: 'pelicula/:id/:pag/:termino', component: PeliculaComponent },
     { path: '**', component: HomeComponent },
 ];
 

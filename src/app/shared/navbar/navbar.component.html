@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Movie Doctor APP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,8 +18,12 @@
 
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
+    <form class="form-inline my-2 my-lg-0" (ngSubmit)="buscarPelicula(termino.value)">
+      <input class="form-control mr-sm-2" 
+            type="search" 
+            #termino 
+            (keyup.enter)="buscarPelicula(termino.value)" 
+            placeholder="Buscar" aria-label="Buscar">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
     </form>
 

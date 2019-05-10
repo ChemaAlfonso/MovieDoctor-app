@@ -1,0 +1,46 @@
+<div class="row my-5 animated fadeIn" *ngIf="peliculas">
+  
+    <div class="col-12 col-md-6  p-0 m-0">
+  
+      <img src="{{ peliculas[0] | noimage}}" (click)="verPelicula( peliculas[0].id)" class="w-100 p-0 m-0 img-fluid pointer" alt="{{peliculas[0].original_title}}">
+      <p class="embedTitle pointer" (click)="verPelicula( peliculas[0].id)">{{ peliculas[0].title}}</p>
+  
+      <div class="row p-0 m-0">
+        
+        <div class="col-6  p-0 m-0">
+          <img src="{{ peliculas[1] | noimage}}" (click)="verPelicula( peliculas[1].id)" class="w-100 p-0 m-0 img-fluid pointer" alt="{{peliculas[1].original_title}}">
+          <p class="embedTitle pointer" (click)="verPelicula( peliculas[1].id)">{{ peliculas[1].title}}</p>
+        </div>
+  
+        <div class="col-6  p-0 m-0">
+            <img src="{{ peliculas[2] | noimage}}" (click)="verPelicula( peliculas[2].id)" class="w-100 p-0 m-0 img-fluid pointer" alt="{{peliculas[2].original_title}}">
+            <p class="embedTitle pointer" (click)="verPelicula( peliculas[2].id)">{{ peliculas[2].title}}</p>
+        </div>
+  
+      </div>
+  
+    </div>
+  
+    <div class="col-12 col-md-6  p-0 m-0">
+  
+        <div class="row p-0 m-0">
+  
+          <div class="col-6  p-0 m-0">
+              <img src="{{ peliculas[3] | noimage}}" (click)="verPelicula( peliculas[3].id)" class="w-100 p-0 m-0 img-fluid pointer" alt="{{peliculas[3].original_title}}">
+              <p class="embedTitle pointer" (click)="verPelicula( peliculas[3].id)">{{ peliculas[3].title}}</p>
+          </div>
+  
+          <div class="col-6  p-0 m-0">
+              <img src="{{ peliculas[4] | noimage}}" (click)="verPelicula( peliculas[4].id)" class="w-100 p-0 m-0 img-fluid pointer" alt="{{peliculas[4].original_title}}">
+              <p class="embedTitle pointer" (click)="verPelicula( peliculas[4].id)">{{ peliculas[4].title}}</p>
+          </div>
+  
+        </div>
+  
+        <img src="{{ peliculas[5] | noimage}}" (click)="verPelicula( peliculas[5].id)" class="w-100 p-0 m-0 img-fluid pointer" alt="{{peliculas[5].original_title}}">
+        <p class="embedTitle pointer" (click)="verPelicula( peliculas[5].id)">{{ peliculas[5].title}}</p>
+  
+    </div>
+
+      
+</div>

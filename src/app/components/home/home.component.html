@@ -1,47 +1,31 @@
 <div class="row my-5">
   <div class="col-12">
-    <h1 class="display-1 text-center pb-5">Movie Doctor APP</h1>
-    <p class="mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, voluptatem quasi! Sapiente deleniti qui in blanditiis. Iusto assumenda, quisquam sint aperiam enim, perspiciatis sapiente magnam, at ea eum nisi ab mollitia eaque. Iusto, tempore, tenetur odit officia dolor eligendi doloremque suscipit assumenda fuga distinctio ab excepturi, architecto earum reiciendis quos accusamus nulla quisquam dolores tempora voluptatum. Saepe explicabo reiciendis labore, asperiores placeat voluptates ratione cupiditate maxime dolore ipsam non. Consectetur incidunt rem quas beatae quibusdam eligendi. Laboriosam, aspernatur! Error sapiente dolores dolorum, reprehenderit architecto beatae totam molestiae est distinctio eius ratione ullam nobis temporibus quae rerum voluptas unde provident laborum?</p>
-  </div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+          <h1 class="display-1 text-center pb-5 text-info">Movie Doctor APP</h1>
+        <p class="lead">Tu aplicación de novedades e información de películas.</p>
+        <hr class="my-2">
+      </div>
+    </div>
+
+    
+    </div>
 </div>
 
-<div class="row">
+<div class="row  animated fadeIn" *ngIf="cartelera"><!-- Main row -->
+  
+  <h2 class="col-12 display-2 my-5 text-center text-info">Películas en cartelera</h2>
 
-  <div class="col-12"> <!-- Bloque cartelera -->
-      <h2 class="col-12 display-2 my-5 text-center">Películas en cartelera</h2>
+  <app-galeria [peliculas]="cartelera | slice:0:6"></app-galeria>
+    
 
-      <div class="col-12 pelisPanel d-flex justify-content-between"> <!-- Panel pelis -->
-
-        <div class="col-12 col-md-4 col-lg-3 card" style="width: 18rem;" *ngFor="let pelicula of cartelera">
-          <img src="{{ _peliculasService.imgUrl }}/{{ pelicula.poster_path }}" class="card-img-top" alt="{{ pelicula.title }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ pelicula.title }}</h5>
-            <div class="col-12 text-right m-0 p-0">
-                <span class="badge badge-pill"
-                      [ngClass]="{'badge-danger': pelicula.vote_average < 5,
-                                  'badge-warning': pelicula.vote_average >= 5 && pelicula.vote_average < 6 ,
-                                  'badge-primary': pelicula.vote_average >= 6 && pelicula.vote_average < 8,
-                                  'badge-success': pelicula.vote_average >= 8  }">{{ pelicula.vote_average }}
-                </span>
-            </div>
-            <p class="card-text">{{ pelicula.overview | shortext }}</p>
-            <div class="col-12 text-center text-md-left m-0 p-0">
-                <a [routerLink]="['/pelicula', pelicula.id]" class="btn btn-primary">Ver más</a>
-            </div>
-          </div>
-        </div>
-
-      </div> <!-- Fin panel pelis -->
-
-  </div><!-- Fin bloque cartelera -->
-
-  <div class="col-12"> <!-- Bloque populares -->
-    <h2 class="col-12 display-2 my-5 text-center">Películas más populares</h2>
+  <div class="col-12 mt-5"> <!-- Bloque cartelera -->
 
     <div class="col-12 pelisPanel d-flex justify-content-between"> <!-- Panel pelis -->
 
-      <div class="col-12 col-md-4 col-lg-3 card" style="width: 18rem;" *ngFor="let pelicula of populares">
-        <img src="{{ _peliculasService.imgUrl }}/{{ pelicula.poster_path }}" class="card-img-top" alt="{{ pelicula.title }}">
+      <div class="col-12 col-md-4 col-lg-3 card" style="width: 18rem;" *ngFor="let pelicula of cartelera">
+        <img src="{{ pelicula | noimage }}" class="card-img-top" alt="{{ pelicula.title }}">
         <div class="card-body">
           <h5 class="card-title">{{ pelicula.title }}</h5>
           <div class="col-12 text-right m-0 p-0">
@@ -54,7 +38,37 @@
           </div>
           <p class="card-text">{{ pelicula.overview | shortext }}</p>
           <div class="col-12 text-center text-md-left m-0 p-0">
-              <a [routerLink]="['/pelicula', pelicula.id]" class="btn btn-primary">Ver más</a>
+              <a [routerLink]="['/pelicula', pelicula.id, 'home']" class="btn btn-primary d-block d-md-inline d-block d-md-inline">Ver más</a>
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- Fin panel pelis -->
+
+  </div><!-- Fin bloque cartelera -->
+
+  <div class="col-12 animated fadeIn"  *ngIf="populares"> <!-- Bloque populares -->
+    <h2 class="col-12 display-2 my-5 text-center text-info">Películas más populares</h2>
+
+    <app-galeria [peliculas]="populares | slice:0:6"></app-galeria>
+
+    <div class="col-12 pelisPanel d-flex justify-content-between"> <!-- Panel pelis -->
+
+      <div class="col-12 col-md-4 col-lg-3 card" style="width: 18rem;" *ngFor="let pelicula of populares">
+        <img src="{{ pelicula | noimage }}" class="card-img-top" alt="{{ pelicula.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ pelicula.title }}</h5>
+          <div class="col-12 text-right m-0 p-0">
+              <span class="badge badge-pill"
+                    [ngClass]="{'badge-danger': pelicula.vote_average < 5,
+                                'badge-warning': pelicula.vote_average >= 5 && pelicula.vote_average < 6 ,
+                                'badge-primary': pelicula.vote_average >= 6 && pelicula.vote_average < 8,
+                                'badge-success': pelicula.vote_average >= 8  }">{{ pelicula.vote_average }}
+              </span>
+          </div>
+          <p class="card-text">{{ pelicula.overview | shortext }}</p>
+          <div class="col-12 text-center text-md-left m-0 p-0">
+              <a [routerLink]="['/pelicula', pelicula.id, 'home']" class="btn btn-primary d-block d-md-inline">Ver más</a>
           </div>
         </div>
       </div>
@@ -63,13 +77,16 @@
 
   </div><!-- Fin bloque populares -->
   
-  <div class="col-12"> <!-- Bloque populares para niños -->
-    <h2 class="col-12 display-2 my-5 text-center">Películas más populares para niños</h2>
+  <div class="col-12 animated fadeIn"  *ngIf="peques"> <!-- Bloque populares para niños -->
+    <h2 class="col-12 display-2 my-5 text-center text-info">Para toda la familia</h2>
+
+    
+    <app-galeria [peliculas]="peques | slice:0:6"></app-galeria>
 
     <div class="col-12 pelisPanel d-flex justify-content-between"> <!-- Panel pelis -->
 
       <div class="col-12 col-md-4 col-lg-3 card" style="width: 18rem;" *ngFor="let pelicula of peques">
-        <img src="{{ _peliculasService.imgUrl }}/{{ pelicula.poster_path }}" class="card-img-top" alt="{{ pelicula.title }}">
+        <img src="{{ pelicula | noimage }}" class="card-img-top" alt="{{ pelicula.title }}">
         <div class="card-body">
           <h5 class="card-title">{{ pelicula.title }}</h5>
           <div class="col-12 text-right m-0 p-0">
@@ -82,7 +99,7 @@
           </div>
           <p class="card-text">{{ pelicula.overview | shortext }}</p>
           <div class="col-12 text-center text-md-left m-0 p-0">
-              <a [routerLink]="['/pelicula', pelicula.id]" class="btn btn-primary">Ver más</a>
+              <a [routerLink]="['/pelicula', pelicula.id, 'home']" class="btn btn-primary d-block d-md-inline">Ver más</a>
           </div>
         </div>
       </div>
@@ -90,5 +107,9 @@
     </div> <!-- Fin panel pelis -->
 
   </div><!-- Fin bloque populares para niños -->
+
+
+
+
 
 </div> <!-- Fin main row -->

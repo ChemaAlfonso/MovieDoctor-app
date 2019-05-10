@@ -9,9 +9,9 @@ import { Pelicula } from 'src/app/interfaces/pelicula';
 })
 export class HomeComponent implements OnInit {
 
-  populares: Pelicula[] = [];
-  cartelera: Pelicula[] = [];
-  peques: Pelicula[] = [];
+  populares: Pelicula[];
+  cartelera: Pelicula[];
+  peques: Pelicula[];
 
   constructor( public _peliculasService: PeliculasService ) {}
 
@@ -24,22 +24,21 @@ export class HomeComponent implements OnInit {
   getPopulares(){
     this._peliculasService.getPopulares()
     .subscribe( data => {
-      this.populares = data.results;
-      console.log(this.populares);
+      this.populares = data;
     });
   }
 
   getCartelera(){
     this._peliculasService.getCartelera()
     .subscribe( data => {
-      this.cartelera = data.results;
+      this.cartelera = data;
     });
   }
 
   getPeques(){
     this._peliculasService.getPeques()
     .subscribe( data => {
-      this.peques = data.results;
+      this.peques = data;
     });
   }
 

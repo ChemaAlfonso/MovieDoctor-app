@@ -6,4 +6,5 @@ export interface Pelicula {
     poster_path?: string;
     backdrop_path?: string;
     id: number;
+    runtime?: number;
 }

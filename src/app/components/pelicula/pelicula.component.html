@@ -1,10 +1,11 @@
 
 <div class="row" *ngIf="pelicula">
   <div class="col-12">
-      <h2 class="my-5">{{ pelicula.title }}</h2>
-      <div class="col-12 d-flex justify-content-center my-5">
-        <img src="{{ _peliculasService.imgUrl }}/{{ pelicula.poster_path }}" alt="" class="img-fluid">
+      <h2 class=" my-3 my-lg-5">{{ pelicula.title }}</h2>
+      <div class="col-12 d-flex justify-content-center my-5" *ngIf="pelicula.poster_path">
+        <img src="{{ pelicula | noimage:true }}" [alt]="pelicula.title" class="img-fluid">
       </div>
+
 
       <div class="row mb-5">
             <h3 class="col-8  text-center">Valoracion</h3>
@@ -15,16 +16,38 @@
                                   'bg-success': pelicula.vote_average >= 8  }">{{ pelicula.vote_average }}
                 </p>
       </div>
+      
+      <div class="col-12 d-flex justify-content-center my-5" *ngIf="pelicula.backdrop_path">
+          <img src="{{ pelicula | noimage }}" [alt]="pelicula.title" class="img-fluid">
+      </div>
 
       <div class="row my-5">
         <div class="col-12 col-lg-8 m-lg-auto">
-            <h3>Sinopsis</h3>
-            <p>{{ pelicula.overview }}</p>
+
+          <div class="row mt-5">
+
+              <div class="col-6"><h3>Sinopsis</h3></div>
+              <div class="col-6 text-right"
+              [ngClass]="{'text-success': pelicula.vote_average < 65,
+                          'text-primary': pelicula.runtime >= 65 && pelicula.runtime < 90 ,
+                          'text-warning': pelicula.runtime >= 90 && pelicula.runtime < 120,
+                          'text-danger': pelicula.runtime >= 120  }">
+                <h4>Duracion: {{ pelicula.runtime }} <small>min.</small> </h4>
+              </div>
+              
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+                <p>{{ pelicula.overview }}</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
       <div class="col-12 text-center mb-5">
-          <button [routerLink]="['/home']" type="button" class="btn btn-outline-danger">Volver</button>
+          <button (click)="atras()" type="button" class="btn btn-outline-danger">Volver</button>
       </div>
       
   </div>

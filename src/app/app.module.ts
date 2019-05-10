@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 
@@ -9,12 +10,16 @@ import { HomeComponent } from './components/home/home.component';
 
 // Routes
 import { AppRoutingModule } from './app.routing';
+
+// Components
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BuscarComponent } from './components/buscar/buscar.component';
+import { PeliculaComponent } from './components/pelicula/pelicula.component';
 
 // Pipes
 import { ShortextPipe } from './pipes/shortext.pipe';
-import { PeliculaComponent } from './components/pelicula/pelicula.component';
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { GaleriaComponent } from './components/home/galeria.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +28,17 @@ import { PeliculaComponent } from './components/pelicula/pelicula.component';
     NavbarComponent,
     BuscarComponent,
     ShortextPipe,
-    PeliculaComponent
+    PeliculaComponent,
+    NoimagePipe,
+    GaleriaComponent
   ],
   imports: [
     BrowserModule,
     HttpClientJsonpModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
