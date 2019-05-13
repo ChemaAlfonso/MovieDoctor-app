@@ -1,6 +1,6 @@
 
 <div class="row" *ngIf="pelicula">
-  <div class="col-12">
+  <div class="col-12 mt-5">
       <h2 class=" my-3 my-lg-5">{{ pelicula.title }}</h2>
       <div class="col-12 d-flex justify-content-center my-5" *ngIf="pelicula.poster_path">
         <img src="{{ pelicula | noimage:true }}" [alt]="pelicula.title" class="peliImg">

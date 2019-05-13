@@ -43,7 +43,6 @@ export class PeliculaComponent implements OnInit {
      return this._peliculasService.getPelicula( this.id )
                  .subscribe( data => {
                    this.pelicula = data;
-                   console.log(this.pelicula);
                  })
   }
 
